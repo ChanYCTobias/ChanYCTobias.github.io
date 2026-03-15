@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Tobias Chan - robotics, reinforcement learning, ROS2, CAD, and product development projects." />
+  <title>Tobias Chan | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: #151d3b;
+      --text: #e9ecf8;
+      --muted: #a6b0d4;
+      --accent: #7ca9ff;
+      --accent-2: #80ffd9;
+      --border: #27325f;
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 700px at 80% -5%, rgba(124, 169, 255, 0.22), transparent 50%),
+                  radial-gradient(900px 500px at -10% 10%, rgba(128, 255, 217, 0.15), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-2);
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 16, 32, 0.75);
+      border-bottom: 1px solid rgba(124, 169, 255, 0.2);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    header.hero {
+      padding: 72px 0 42px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      max-width: 900px;
+    }
+
+    .subtitle {
+      margin-top: 16px;
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 600;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #5f90ff, #68c6ff);
+      color: #071027;
+      border: none;
+    }
+
+    section {
+      padding: 26px 0 12px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      letter-spacing: 0.01em;
+    }
+
+    .intro-list {
+      margin: 0;
+      padding-left: 1rem;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .media-placeholder {
+      min-height: 120px;
+      margin: 12px 0;
+      border-radius: 12px;
+      border: 1px dashed #3b4b86;
+      background: linear-gradient(135deg, rgba(124, 169, 255, 0.12), rgba(128, 255, 217, 0.08));
+      display: grid;
+      place-items: center;
+      color: #c8d5ff;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .media-link {
+      display: block;
+      margin: 12px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(124, 169, 255, 0.25);
+    }
+
+    .media-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 220px;
+      object-fit: cover;
+      background: #0e1430;
+    }
+
+    .link-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .link-list li {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    .muted-note {
+      color: #8e9bc8;
+      font-size: 0.86rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(124, 169, 255, 0.35);
+      background: rgba(124, 169, 255, 0.12);
+      color: #d8e4ff;
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 28px 0 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="container nav-inner">
+      <div class="brand">Tobias Chan</div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#papers">Papers</a>
+        <a href="#tooling">Engineering</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <span class="eyebrow">Chan Tobias Yin-Ching Portfolio</span>
+    <h1>Robotics, AI, and product engineering projects with practical, build-first execution.</h1>
+    <p class="subtitle">
+      My projects showcase and documentation. For more information, feel free to email me at
+      <a href="mailto:[email protected]">[email protected]</a>.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn" href="https://tobiaschan.carrd.co/" target="_blank" rel="noopener noreferrer">Original Carrd Page</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="projects">
+      <h2 class="section-title">Project Areas</h2>
+      <ul class="intro-list">
+        <li>Magnetic localization wearable</li>
+        <li>Reinforcement learning manipulation paper</li>
+        <li>LeCal invited session draft paper</li>
+        <li>Building a complete ROS2 perception pipeline</li>
+        <li>Fusion 360 products</li>
+        <li>Scaling imitation learning data with Isaac Lab Mimic</li>
+        <li>macOS app</li>
+      </ul>
+    </section>
+
+    <section id="tooling">
+      <h2 class="section-title">Magnetic Master Device</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>PCB Software</h3>
+          <p>Click on images for video demo.</p>
+          <a class="media-link" href="https://www.youtube.com/watch?v=LmG1qyAfd6s" target="_blank" rel="noopener noreferrer" aria-label="Open PCB software demo video">
+            <img class="media-image" src="https://img.youtube.com/vi/LmG1qyAfd6s/hqdefault.jpg" alt="PCB software demo thumbnail" />
+          </a>
+          <ul class="link-list">
+            <li><a href="https://www.youtube.com/watch?v=LmG1qyAfd6s" target="_blank" rel="noopener noreferrer">PCB software demo</a></li>
+          </ul>
+          <p class="muted-note">Media and link updated to the provided demo URL.</p>
+        </article>
+
+        <article class="card">
+          <h3>Hardware Demo</h3>
+          <p>Magnetic localization wearable hardware demonstration.</p>
+          <a class="media-link" href="https://www.youtube.com/watch?v=z_lddacU8Ew" target="_blank" rel="noopener noreferrer" aria-label="Open hardware demo video">
+            <img class="media-image" src="https://img.youtube.com/vi/z_lddacU8Ew/hqdefault.jpg" alt="Hardware demo thumbnail" />
+          </a>
+          <ul class="link-list">
+            <li><a href="https://www.youtube.com/watch?v=z_lddacU8Ew" target="_blank" rel="noopener noreferrer">Hardware demo</a></li>
+            <li><a href="https://www.youtube.com/watch?v=WwBrVTyI6hw" target="_blank" rel="noopener noreferrer">Recorded work process</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2 class="section-title">Reinforcement Learning Conference Paper</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>RL Manipulation Pick-and-Place</h3>
+          <p>Conference paper and implementation references. This work studies robustness under privileged-pose corruption with modality dropout in Isaac Lab.</p>
+          <a class="media-link" href="media/RL_paper/rl_pick_place.gif" target="_blank" rel="noopener noreferrer" aria-label="Open RL pick and place GIF">
+            <img class="media-image" src="media/RL_paper/rl_pick_place.gif" alt="RL pick and place simulation GIF" />
+          </a>
+          <ul class="link-list">
+            <li><a href="paper/rl_paper.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
+            <li><a href="https://github.com/Toby0614/IsaacLab_manipulation/blob/master/conference_paper.pdf" target="_blank" rel="noopener noreferrer">Conference paper link (GitHub)</a></li>
+            <li><a href="https://raw.githubusercontent.com/Toby0614/IsaacLab_manipulation/master/conference_paper.pdf" target="_blank" rel="noopener noreferrer">Direct PDF link</a></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>ROS2 Perception Pipeline</h3>
+          <p>Building a complete ROS2 perception pipeline and integration framework.</p>
+          <div class="tag-row">
+            <span class="tag">ROS2</span>
+            <span class="tag">Perception</span>
+            <span class="tag">Isaac Sim</span>
+          </div>
+          <ul class="link-list">
+            <li><a href="https://github.com/Toby0614/isaacsim_ros2_framework" target="_blank" rel="noopener noreferrer">GitHub link</a></li>
+          </ul>
+          <p class="muted-note">No media preview yet. Repository link provided as the primary reference.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="papers">
+      <h2 class="section-title">Papers</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Modality Dropout in Privileged-Pose Manipulation (RL Paper)</h3>
+          <p>
+            This paper evaluates PPO policies under realistic pose outages (hard missing, freeze, noise+drift, and delay) and finds
+            that dropout-aware training improves robustness more reliably than simply adding extra sensing modalities.
+          </p>
+          <ul class="link-list">
+            <li><a href="paper/rl_paper.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
+            <li><a href="https://github.com/Toby0614/IsaacLab_manipulation" target="_blank" rel="noopener noreferrer">Project code repository</a></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>LeCal: Latency-Aware Dataset Curation and Alignment</h3>
+          <p>
+            LeCal is a practical post-hoc calibration workflow for LeRobot teleoperation datasets. It estimates action-to-state delay,
+            reports confidence diagnostics, supports camera offset checks, and exports reusable alignment artifacts for downstream training.
+          </p>
+          <ul class="link-list">
+            <li><a href="paper/lecal_first_draft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
+            <li><a href="https://github.com/Toby0614/LeCal" target="_blank" rel="noopener noreferrer">LeCal GitHub</a></li>
+            <li><a href="https://huggingface.co/datasets/Toby0614/lecal_calibration" target="_blank" rel="noopener noreferrer">Calibration dataset</a></li>
+          </ul>
+          <p class="muted-note">ICCA 2026 invited session draft.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Fusion 360 Products</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Custom Wheels for a WIP Project</h3>
+          <p>Mechanical design exploration and prototyping workflow.</p>
+          <a class="media-link" href="media/fusion_360/custom_wheels.png" target="_blank" rel="noopener noreferrer" aria-label="Open custom wheels image">
+            <img class="media-image" src="media/fusion_360/custom_wheels.png" alt="Fusion 360 custom wheels render" />
+          </a>
+        </article>
+        <article class="card">
+          <h3>Container With Drilled Holes</h3>
+          <p>CAD design emphasizing manufacturability and practical assembly.</p>
+          <a class="media-link" href="media/fusion_360/container_holes.png" target="_blank" rel="noopener noreferrer" aria-label="Open container design image">
+            <img class="media-image" src="media/fusion_360/container_holes.png" alt="Fusion 360 drilled container render" />
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Fine-Tuning GR00T N1.6 for Cross-Embodiment Adaptation</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Dataset Collection and Teleoperation</h3>
+          <p>Using Hugging Face's SO-101 for teleoperation. Ongoing project with dataset collection demo.</p>
+          <div class="tag-row">
+            <span class="tag">GR00T N1.6</span>
+            <span class="tag">Teleoperation</span>
+            <span class="tag">Cross-Embodiment</span>
+          </div>
+          <ul class="link-list">
+            <li><a href="https://youtu.be/FH0osPKTs0I" target="_blank" rel="noopener noreferrer">Video link</a></li>
+            <li><a href="https://drive.google.com/file/d/1REL5Oa7Jwu2b0YEfhmvwxx0l59yqWt-v/view?usp=sharing" target="_blank" rel="noopener noreferrer">Proposal link</a></li>
+            <li><a href="https://huggingface.co/Toby0614/GR00T_fine-tune_LLMVision_frozen/tree/main" target="_blank" rel="noopener noreferrer">Current fine-tuned models link (ongoing updates)</a></li>
+          </ul>
+          <p class="muted-note">Media preview removed for a cleaner layout until better visuals are ready.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">macOS Productivity App</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Menubar Productivity Assistant</h3>
+          <p>
+            An app that uses a macOS menubar window for quick access to record important information,
+            with cloud sync and an AI assistant for analysis and modification.
+          </p>
+          <div class="media-placeholder">Image/GIF Placeholder: Screenshot of AI assistant</div>
+          <p class="muted-note">Still in testing stage. Email for a private video demo.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="container">
+    <p><strong>Tobias Chan</strong> &mdash; Portfolio Projects</p>
+    <p>
+      Contact:
+      <a href="mailto:[email protected]">[email protected]</a>
+      &nbsp;|&nbsp;
+      Source inspiration:
+      <a href="https://tobiaschan.carrd.co/" target="_blank" rel="noopener noreferrer">tobiaschan.carrd.co</a>
+    </p>
+  </footer>
+</body>
+</html>
