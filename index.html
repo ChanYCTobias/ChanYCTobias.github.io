@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tobias Chan — robotics and ML projects, ICCA 2026 publication (LeCal), papers, CAD, and demos." />
+  <meta name="description" content="Tobias Chan portfolio — robotics, ML, medical decision-support, science learning tools, papers, CAD, and demos." />
   <title>Tobias Chan | Portfolio</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%235f90ff'/%3E%3Cstop offset='100%25' stop-color='%2368c6ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='41' font-family='Arial,sans-serif' font-size='26' font-weight='700' text-anchor='middle' fill='%23071027'%3ETC%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +20,7 @@
       --accent-2: #80ffd9;
       --border: #27325f;
       --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-      --radius: 16px;
+      --radius: 8px;
     }
 
     * {
@@ -196,7 +196,7 @@
     .media-link {
       display: block;
       margin: 12px 0;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
       border: 1px solid rgba(124, 169, 255, 0.25);
     }
@@ -247,9 +247,71 @@
       line-height: 1.2;
     }
 
+    .project-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .project-feature .carousel {
+      margin: 0;
+    }
+
+    .project-copy p:last-child,
+    .project-copy .link-list:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-kicker {
+      margin: 0 0 6px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .feature-list {
+      margin: 0 0 12px;
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 12px;
+    }
+
+    .video-panel {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .video-frame {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      border: 1px solid rgba(124, 169, 255, 0.28);
+      background: #080d22;
+      object-fit: contain;
+    }
+
+    .video-panel figcaption,
+    .carousel-caption {
+      color: #aeb9df;
+      font-size: 0.84rem;
+      margin-top: 8px;
+    }
+
     .carousel {
       margin: 12px 0;
-      border-radius: 14px;
+      border-radius: 8px;
       border: 1px solid rgba(124, 169, 255, 0.28);
       background: linear-gradient(180deg, rgba(14, 20, 48, 0.85), rgba(10, 14, 33, 0.9));
       overflow: hidden;
@@ -281,6 +343,11 @@
       cursor: zoom-in;
     }
 
+    .project-feature .carousel-slide img,
+    .wide-gallery .carousel-slide img {
+      height: min(46vw, 420px);
+    }
+
     .carousel-controls {
       display: flex;
       align-items: center;
@@ -294,7 +361,7 @@
       border: 1px solid rgba(124, 169, 255, 0.45);
       background: rgba(124, 169, 255, 0.15);
       color: #dce6ff;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 6px 12px;
       font-size: 0.84rem;
       font-weight: 700;
@@ -331,7 +398,7 @@
     .lightbox-content {
       width: min(1200px, 96vw);
       height: min(90vh, 900px);
-      border-radius: 14px;
+      border-radius: 8px;
       border: 1px solid rgba(124, 169, 255, 0.34);
       background: #0a1129;
       display: grid;
@@ -355,7 +422,7 @@
       border: 1px solid rgba(124, 169, 255, 0.45);
       background: rgba(124, 169, 255, 0.18);
       color: #e9efff;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 6px 10px;
       cursor: pointer;
       font-weight: 700;
@@ -374,7 +441,7 @@
       width: auto;
       height: auto;
       object-fit: contain;
-      border-radius: 10px;
+      border-radius: 8px;
       background: #090f25;
     }
 
@@ -386,9 +453,19 @@
       font-size: 0.95rem;
     }
 
+    @media (max-width: 860px) {
+      .project-feature {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 720px) {
       .nav-inner {
         align-items: flex-start;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -400,9 +477,10 @@
       <div class="nav-links">
         <a href="#publication">Publication</a>
         <a href="#projects">Projects</a>
+        <a href="#tooling">Magnetic</a>
+        <a href="#websites">Websites</a>
         <a href="#research">Research</a>
         <a href="#papers">Papers</a>
-        <a href="#tooling">Engineering</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -452,6 +530,8 @@
       <h2 class="section-title">Project Areas</h2>
       <ul class="intro-list">
         <li>Magnetic localization wearable</li>
+        <li>Ocsina / RetinaSignal OCT clinical decision-support demo</li>
+        <li>Corscientia connected science learning website</li>
         <li>Reinforcement learning manipulation paper</li>
         <li>LeCal (IEEE ICCA 2026 accepted)</li>
         <li>Building a complete ROS2 perception pipeline</li>
@@ -463,31 +543,130 @@
 
     <section id="tooling">
       <h2 class="section-title">Magnetic Master Device</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>PCB Software</h3>
-          <p>Click on images for video demo.</p>
-          <a class="media-link" href="https://www.youtube.com/watch?v=LmG1qyAfd6s" target="_blank" rel="noopener noreferrer" aria-label="Open PCB software demo video">
-            <img class="media-image" src="https://img.youtube.com/vi/LmG1qyAfd6s/hqdefault.jpg" alt="PCB software demo thumbnail" />
-          </a>
-          <ul class="link-list">
-            <li><a href="https://www.youtube.com/watch?v=LmG1qyAfd6s" target="_blank" rel="noopener noreferrer">PCB software demo</a></li>
-          </ul>
-          <p class="muted-note">Media and link updated to the provided demo URL.</p>
-        </article>
+      <article class="card">
+        <h3>Magnetic Master Prototype and Tracking Workflow</h3>
+        <p>
+          A magnetic localization master device prototype with local tracking and hardware demonstrations. The paper, prototype video, and tracking video are bundled directly with the portfolio so reviewers can open them without leaving the page.
+        </p>
+        <div class="tag-row">
+          <span class="tag">Magnetic tracking</span>
+          <span class="tag">Wearable hardware</span>
+          <span class="tag">Prototype system</span>
+        </div>
+        <div class="video-grid" aria-label="Magnetic Master local video demos">
+          <figure class="video-panel">
+            <video class="video-frame" controls preload="metadata" playsinline>
+              <source src="media/MMD/prototype.mp4" type="video/mp4" />
+              <a href="media/MMD/prototype.mp4">Open prototype demo video</a>
+            </video>
+            <figcaption>Prototype hardware demonstration.</figcaption>
+          </figure>
+          <figure class="video-panel">
+            <video class="video-frame" controls preload="metadata" playsinline>
+              <source src="media/MMD/Tracking.mp4" type="video/mp4" />
+              <a href="media/MMD/Tracking.mp4">Open tracking demo video</a>
+            </video>
+            <figcaption>Tracking workflow and device response.</figcaption>
+          </figure>
+        </div>
+        <ul class="link-list">
+          <li><a href="media/MMD/Msc_Project_Paper_resume.pdf" target="_blank" rel="noopener noreferrer">Download Magnetic Master paper (PDF)</a></li>
+          <li><a href="https://www.youtube.com/watch?v=LmG1qyAfd6s" target="_blank" rel="noopener noreferrer">PCB software demo</a></li>
+          <li><a href="https://www.youtube.com/watch?v=z_lddacU8Ew" target="_blank" rel="noopener noreferrer">Hardware demo</a></li>
+          <li><a href="https://www.youtube.com/watch?v=WwBrVTyI6hw" target="_blank" rel="noopener noreferrer">Recorded work process</a></li>
+        </ul>
+      </article>
+    </section>
 
-        <article class="card">
-          <h3>Hardware Demo</h3>
-          <p>Magnetic localization wearable hardware demonstration.</p>
-          <a class="media-link" href="https://www.youtube.com/watch?v=z_lddacU8Ew" target="_blank" rel="noopener noreferrer" aria-label="Open hardware demo video">
-            <img class="media-image" src="https://img.youtube.com/vi/z_lddacU8Ew/hqdefault.jpg" alt="Hardware demo thumbnail" />
-          </a>
-          <ul class="link-list">
-            <li><a href="https://www.youtube.com/watch?v=z_lddacU8Ew" target="_blank" rel="noopener noreferrer">Hardware demo</a></li>
-            <li><a href="https://www.youtube.com/watch?v=WwBrVTyI6hw" target="_blank" rel="noopener noreferrer">Recorded work process</a></li>
+    <section id="websites">
+      <h2 class="section-title">Product and Learning Websites</h2>
+      <article class="card project-feature">
+        <div class="project-copy">
+          <p class="project-kicker">Clinical decision-support prototype</p>
+          <h3>Ocsina / RetinaSignal</h3>
+          <p>
+            RetinaSignal is an OCT-based clinical decision-support startup prototype that converts routine retinal scans into structured biomarker summaries, risk flags, and clinician-friendly reports for neurology workflows, starting with multiple sclerosis.
+          </p>
+          <ul class="feature-list">
+            <li>Vendor-aware DICOM parsing for Heidelberg Spectralis and Zeiss Cirrus workflows.</li>
+            <li>Age-aware normative comparison, bilateral inter-eye analysis, and rules-based risk reporting.</li>
+            <li>PDF, JSON, and CSV export paths for expert review and downstream use.</li>
           </ul>
-        </article>
-      </div>
+          <div class="tag-row">
+            <span class="tag">OCT</span>
+            <span class="tag">Clinical workflow</span>
+            <span class="tag">DICOM</span>
+            <span class="tag">Report export</span>
+          </div>
+          <ul class="link-list">
+            <li><a href="https://ocsina.com" target="_blank" rel="noopener noreferrer">Live demo: ocsina.com</a></li>
+          </ul>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <figure class="carousel-slide">
+                <img src="media/Ocsina/website_demo1.png" alt="Ocsina RetinaSignal OCT upload workflow screenshot" loading="lazy" />
+              </figure>
+              <figure class="carousel-slide">
+                <img src="media/Ocsina/website_demo2.png" alt="Ocsina RetinaSignal export workflow screenshot" loading="lazy" />
+              </figure>
+              <figure class="carousel-slide">
+                <img src="media/Ocsina/retinasignal_demo_export_us.pdf.png" alt="RetinaSignal clinical decision-support report export" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Show previous Ocsina screenshot">← Prev</button>
+            <span class="carousel-status" data-carousel-status aria-live="polite">1 / 3</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="Show next Ocsina screenshot">Next →</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-feature">
+        <div class="project-copy">
+          <p class="project-kicker">Connected science curriculum</p>
+          <h3>Corscientia</h3>
+          <p>
+            Corscientia is a learning website that maps core science topics across foundations, mathematics, physics, chemistry, biology, and computing, then turns each topic into a consistent study rhythm with interactive labs and review loops.
+          </p>
+          <ul class="feature-list">
+            <li>Curriculum graph for prerequisites, bridge topics, and local concept transfer.</li>
+            <li>Interactive lab surfaces for cell biology, kinetics, and science foundations.</li>
+            <li>Flashcards, quizzes, and concept checks built into the learning flow.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Learning design</span>
+            <span class="tag">Interactive labs</span>
+            <span class="tag">Science curriculum</span>
+            <span class="tag">Knowledge graph</span>
+          </div>
+          <ul class="link-list">
+            <li><a href="https://corscientia.com" target="_blank" rel="noopener noreferrer">Live website: corscientia.com</a></li>
+          </ul>
+        </div>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <figure class="carousel-slide">
+                <img src="media/corscientia/corscientia_overview.png" alt="Corscientia science foundations homepage screenshot" loading="lazy" />
+              </figure>
+              <figure class="carousel-slide">
+                <img src="media/corscientia/corscientia_cell_lab.png" alt="Corscientia membrane transport cell lab screenshot" loading="lazy" />
+              </figure>
+              <figure class="carousel-slide">
+                <img src="media/corscientia/corscientia_rate_lab.png" alt="Corscientia kinetics barrier race lab screenshot" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Show previous Corscientia screenshot">← Prev</button>
+            <span class="carousel-status" data-carousel-status aria-live="polite">1 / 3</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="Show next Corscientia screenshot">Next →</button>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section id="research">
@@ -558,22 +737,27 @@
 
     <section>
       <h2 class="section-title">Fusion 360 Products</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Custom Wheels for a WIP Project</h3>
-          <p>Mechanical design exploration and prototyping workflow.</p>
-          <a class="media-link" href="media/fusion_360/custom_wheels.png" target="_blank" rel="noopener noreferrer" aria-label="Open custom wheels image">
-            <img class="media-image" src="media/fusion_360/custom_wheels.png" alt="Fusion 360 custom wheels render" />
-          </a>
-        </article>
-        <article class="card">
-          <h3>Container With Drilled Holes</h3>
-          <p>CAD design emphasizing manufacturability and practical assembly.</p>
-          <a class="media-link" href="media/fusion_360/container_holes.png" target="_blank" rel="noopener noreferrer" aria-label="Open container design image">
-            <img class="media-image" src="media/fusion_360/container_holes.png" alt="Fusion 360 drilled container render" />
-          </a>
-        </article>
-      </div>
+      <article class="card wide-gallery">
+        <h3>Mechanical Product Renders</h3>
+        <p>Mechanical design exploration covering custom wheels, manufacturable containers, and practical assembly details.</p>
+        <div class="carousel" data-carousel>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <figure class="carousel-slide">
+                <img src="media/fusion_360/custom_wheels.png" alt="Fusion 360 custom wheels render" loading="lazy" />
+              </figure>
+              <figure class="carousel-slide">
+                <img src="media/fusion_360/container_holes.png" alt="Fusion 360 drilled container render" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-label="Show previous Fusion 360 render">← Prev</button>
+            <span class="carousel-status" data-carousel-status aria-live="polite">1 / 2</span>
+            <button class="carousel-btn" type="button" data-carousel-next aria-label="Show next Fusion 360 render">Next →</button>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section>

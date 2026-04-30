@@ -1,0 +1,19 @@
+RetinaSignal is an OCT-based clinical decision-support startup prototype that converts routine retinal scans into structured biomarker summaries, risk flags, and clinician-friendly reports for neurology workflows, starting with multiple sclerosis. The product focuses on extracting pRNFL and mGCIPL measurements from OCT data, applying quality checks, comparing results against published thresholds, tracking longitudinal change, and presenting the output in a web interface built for expert review.
+
+For this project, I built the core pipeline across data ingestion, analysis, and product delivery. The system includes vendor-aware DICOM parsing for Heidelberg Spectralis and Zeiss Cirrus workflows, age-aware normative comparison, bilateral inter-eye difference analysis, a rules-based risk engine aligned to McDonald 2024 and related OCT/MS literature, PDF/JSON/CSV report export, and an expert-demo website that walks users through upload, analysis, risk reporting, similar cases, and longitudinal monitoring.
+
+Live demo: ocsina.com
+
+Suggested portfolio structure:
+- Hero image: screenshot of the main RetinaSignal dashboard or risk report.
+- Product overview image: upload + analysis workflow.
+- Clinical output image: risk report with thresholds, confidence, and recommended action.
+- Longitudinal image: progression chart across multiple visits.
+- Export image: PDF/JSON/CSV outputs and expert-facing deployment.
+
+Suggested caption text:
+- "Expert-facing RetinaSignal demo for OCT upload, biomarker extraction, and risk reporting."
+- "Risk stratification interface combining threshold-based logic, evidence framing, and clinician override."
+- "Longitudinal OCT monitoring view showing rate-of-change analysis across multiple visits."
+
+What makes this project strong for a portfolio is that it is not just an ML or healthcare mockup. It combines clinical workflow design, medical data parsing, decision-support logic, deployment, and communication constraints into one product. The result is a research-grade startup demo that I could send to domain experts for feedback, with clear claims boundaries and a live hosted experience.
