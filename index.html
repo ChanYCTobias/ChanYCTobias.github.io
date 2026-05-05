@@ -280,6 +280,77 @@
       margin-bottom: 18px;
     }
 
+    .detail-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .detail-feature {
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      margin-bottom: 0;
+    }
+
+    .detail-visual {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .detail-feature .media-link,
+    .detail-feature .carousel {
+      margin: 0;
+    }
+
+    .detail-feature .media-image {
+      max-height: none;
+      height: min(42vw, 340px);
+      object-fit: contain;
+    }
+
+    .detail-panel {
+      min-height: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(124, 169, 255, 0.24);
+      background: linear-gradient(180deg, rgba(14, 20, 48, 0.86), rgba(10, 14, 33, 0.94));
+      display: grid;
+      gap: 12px;
+    }
+
+    .detail-panel-title {
+      margin: 0;
+      color: #dce6ff;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .detail-metric {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(124, 169, 255, 0.2);
+      background: rgba(124, 169, 255, 0.08);
+    }
+
+    .detail-metric strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #dce6ff;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .detail-metric span {
+      color: #aeb9df;
+      font-size: 0.88rem;
+    }
+
     .project-feature .carousel {
       margin: 0;
     }
@@ -480,6 +551,10 @@
 
     @media (max-width: 860px) {
       .project-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -730,31 +805,84 @@
       <p class="muted-note">
         Ongoing technical work spanning reinforcement learning, robot perception, embodiment transfer, and hardware-aligned experimentation.
       </p>
-      <div class="cards">
-        <article class="card">
-          <h3>RL Manipulation Pick-and-Place</h3>
-          <p>Conference paper and implementation references. This work studies robustness under privileged-pose corruption with modality dropout in Isaac Lab.</p>
-          <a class="media-link" href="media/RL_paper/rl_pick_place.gif" target="_blank" rel="noopener noreferrer" aria-label="Open RL pick and place GIF">
-            <img class="media-image" src="media/RL_paper/rl_pick_place.gif" alt="RL pick and place simulation GIF" />
-          </a>
-          <ul class="link-list">
-            <li><a href="paper/ModalityDropout_firstDraft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
-            <li><a href="https://github.com/Toby0614/IsaacLab_manipulation/blob/master/conference_paper.pdf" target="_blank" rel="noopener noreferrer">Conference paper link (GitHub)</a></li>
-            <li><a href="https://raw.githubusercontent.com/Toby0614/IsaacLab_manipulation/master/conference_paper.pdf" target="_blank" rel="noopener noreferrer">Direct PDF link</a></li>
-          </ul>
+      <div class="detail-stack">
+        <article class="card project-feature detail-feature">
+          <div class="project-copy">
+            <p class="project-kicker">Simulation research project</p>
+            <h3>RL Manipulation Pick-and-Place</h3>
+            <p>
+              Conference paper and implementation references for Isaac Lab manipulation experiments under privileged-pose corruption. The project focuses on whether policies can remain usable when pose channels become unreliable at deployment time.
+            </p>
+            <ul class="feature-list">
+              <li>Benchmarks PPO behavior under hard missing, freeze, noise-and-drift, and delayed pose inputs.</li>
+              <li>Tests whether modality dropout improves resilience more reliably than simply injecting extra sensing signals.</li>
+              <li>Uses a pick-and-place task as a controlled environment for robustness analysis and failure characterization.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Isaac Lab</span>
+              <span class="tag">PPO</span>
+              <span class="tag">Robustness</span>
+              <span class="tag">Manipulation</span>
+            </div>
+            <ul class="link-list">
+              <li><a href="paper/ModalityDropout_firstDraft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
+              <li><a href="https://github.com/Toby0614/IsaacLab_manipulation/blob/master/conference_paper.pdf" target="_blank" rel="noopener noreferrer">Conference paper link (GitHub)</a></li>
+              <li><a href="https://raw.githubusercontent.com/Toby0614/IsaacLab_manipulation/master/conference_paper.pdf" target="_blank" rel="noopener noreferrer">Direct PDF link</a></li>
+            </ul>
+          </div>
+          <div class="detail-visual">
+            <a class="media-link" href="media/RL_paper/rl_pick_place.gif" target="_blank" rel="noopener noreferrer" aria-label="Open RL pick and place GIF">
+              <img class="media-image" src="media/RL_paper/rl_pick_place.gif" alt="RL pick and place simulation GIF" />
+            </a>
+            <p class="muted-note">Bundled simulation preview showing the evaluation environment used for the manipulation study.</p>
+          </div>
         </article>
 
-        <article class="card">
-          <h3>ROS2 Perception Pipeline</h3>
-          <p>Building a complete ROS2 perception pipeline and integration framework.</p>
-          <div class="tag-row">
-            <span class="tag">ROS2</span>
-            <span class="tag">Perception</span>
-            <span class="tag">Isaac Sim</span>
+        <article class="card project-feature detail-feature">
+          <div class="project-copy">
+            <p class="project-kicker">Robotics systems integration</p>
+            <h3>ROS2 Perception Pipeline</h3>
+            <p>
+              A reusable ROS2 perception and integration framework for simulation-first robotics workflows. This work is about getting sensing, message transport, and downstream task logic into a cleaner research-ready stack.
+            </p>
+            <ul class="feature-list">
+              <li>Connects Isaac Sim and ROS2 components into a repeatable development path for perception-heavy experiments.</li>
+              <li>Provides a basis for sensor ingestion, runtime debugging, and future manipulation task extensions.</li>
+              <li>Acts as infrastructure for the broader embodied learning and sim-to-real work in the portfolio.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">ROS2</span>
+              <span class="tag">Perception</span>
+              <span class="tag">Isaac Sim</span>
+            </div>
+            <ul class="link-list">
+              <li><a href="https://github.com/Toby0614/isaacsim_ros2_framework" target="_blank" rel="noopener noreferrer">GitHub link</a></li>
+            </ul>
           </div>
-          <ul class="link-list">
-            <li><a href="https://github.com/Toby0614/isaacsim_ros2_framework" target="_blank" rel="noopener noreferrer">GitHub link</a></li>
-          </ul>
+          <div class="detail-visual">
+            <div class="detail-panel">
+              <p class="detail-panel-title">Pipeline scope</p>
+              <div class="detail-grid">
+                <div class="detail-metric">
+                  <strong>Stack</strong>
+                  <span>ROS2, Isaac Sim, perception nodes</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Goal</strong>
+                  <span>Reliable simulation-side sensing and transport</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Use</strong>
+                  <span>Debuggable substrate for later manipulation experiments</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Status</strong>
+                  <span>Active framework work with future expansion in mind</span>
+                </div>
+              </div>
+              <p class="muted-note">Designed as infrastructure rather than a single isolated demo.</p>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -765,55 +893,162 @@
         Draft manuscripts and technical write-ups shared for reference. For the peer-reviewed accepted conference paper (oral presentation and proceedings), see
         <a href="#publication">Publication</a>.
       </p>
-      <div class="cards">
-        <article class="card">
-          <h3>Magnetic Master: Wearable Magnetic Localization Device</h3>
-          <p>
-            Research prototype paper covering the magnetic localization wearable, the tracking workflow, and the hardware design decisions used to turn the sensing concept into a working master device.
-          </p>
-          <ul class="link-list">
-            <li><a href="media/MMD/Msc_Project_Paper_resume.pdf" target="_blank" rel="noopener noreferrer">Download Magnetic Master paper (PDF)</a></li>
-            <li><a href="#tooling">Prototype demos and tracking videos</a></li>
-          </ul>
+      <div class="detail-stack">
+        <article class="card project-feature detail-feature">
+          <div class="project-copy">
+            <p class="project-kicker">Research prototype paper</p>
+            <h3>Magnetic Master: Wearable Magnetic Localization Device</h3>
+            <p>
+              A hardware-focused paper on the wearable magnetic localization master device, covering how the sensing concept was turned into a working prototype with a usable tracking workflow.
+            </p>
+            <ul class="feature-list">
+              <li>Explains the wearable device layout, sensing arrangement, and interaction loop used by the prototype.</li>
+              <li>Documents how local magnetic tracking was integrated into a practical demonstration pipeline.</li>
+              <li>Connects the write-up to bundled prototype and tracking videos for direct review.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Magnetic tracking</span>
+              <span class="tag">Wearable hardware</span>
+              <span class="tag">Prototype paper</span>
+            </div>
+            <ul class="link-list">
+              <li><a href="media/MMD/Msc_Project_Paper_resume.pdf" target="_blank" rel="noopener noreferrer">Download Magnetic Master paper (PDF)</a></li>
+              <li><a href="#tooling">Prototype demos and tracking videos</a></li>
+            </ul>
+          </div>
+          <div class="detail-visual">
+            <div class="detail-panel">
+              <p class="detail-panel-title">What this paper emphasizes</p>
+              <div class="detail-grid">
+                <div class="detail-metric">
+                  <strong>Device</strong>
+                  <span>Wearable magnetic localization master unit</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Focus</strong>
+                  <span>Tracking workflow and hardware feasibility</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Artifacts</strong>
+                  <span>Paper PDF plus local demo videos</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Use case</strong>
+                  <span>Prototype validation and reviewer-friendly demonstration</span>
+                </div>
+              </div>
+              <p class="muted-note">The videos remain in the dedicated Magnetic Master prototype section above.</p>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
-          <h3>Modality Dropout in Privileged-Pose Manipulation (RL Paper)</h3>
-          <p>
-            This paper evaluates PPO policies under realistic pose outages (hard missing, freeze, noise+drift, and delay) and finds
-            that dropout-aware training improves robustness more reliably than simply adding extra sensing modalities.
-          </p>
-          <ul class="link-list">
-            <li><a href="paper/ModalityDropout_firstDraft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
-            <li><a href="https://github.com/Toby0614/IsaacLab_manipulation" target="_blank" rel="noopener noreferrer">Project code repository</a></li>
-          </ul>
+        <article class="card project-feature detail-feature">
+          <div class="project-copy">
+            <p class="project-kicker">Conference draft</p>
+            <h3>Modality Dropout in Privileged-Pose Manipulation (RL Paper)</h3>
+            <p>
+              This paper evaluates PPO policies under realistic pose outages and asks whether dropout-aware training can preserve manipulation performance when privileged state inputs become unreliable.
+            </p>
+            <ul class="feature-list">
+              <li>Studies failure modes such as hard missing measurements, frozen pose streams, noise with drift, and delayed inputs.</li>
+              <li>Compares dropout-aware training against the simpler strategy of adding more sensing modalities.</li>
+              <li>Frames the results around robustness rather than best-case nominal performance.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Reinforcement learning</span>
+              <span class="tag">Privileged pose</span>
+              <span class="tag">Modality dropout</span>
+            </div>
+            <ul class="link-list">
+              <li><a href="paper/ModalityDropout_firstDraft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
+              <li><a href="https://github.com/Toby0614/IsaacLab_manipulation" target="_blank" rel="noopener noreferrer">Project code repository</a></li>
+            </ul>
+          </div>
+          <div class="detail-visual">
+            <a class="media-link" href="media/RL_paper/rl_pick_place.gif" target="_blank" rel="noopener noreferrer" aria-label="Open RL paper simulation GIF">
+              <img class="media-image" src="media/RL_paper/rl_pick_place.gif" alt="RL paper simulation preview GIF" />
+            </a>
+            <p class="muted-note">Local simulation capture used to preview the manipulation setting discussed in the paper.</p>
+          </div>
         </article>
 
-        <article class="card" id="paper-lecal">
-          <h3>LeCal: Latency-Aware Dataset Curation and Alignment</h3>
-          <p>
-            LeCal is a practical post-hoc calibration workflow for LeRobot teleoperation datasets. It estimates action-to-state delay,
-            reports confidence diagnostics, supports camera offset checks, and exports reusable alignment artifacts for downstream training.
-          </p>
-          <ul class="link-list">
-            <li><a href="paper/LeCal_firstDraft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
-            <li><a href="https://github.com/Toby0614/LeCal" target="_blank" rel="noopener noreferrer">LeCal GitHub</a></li>
-            <li><a href="https://huggingface.co/datasets/Toby0614/lecal_calibration" target="_blank" rel="noopener noreferrer">Calibration dataset</a></li>
-          </ul>
-          <p class="muted-note">The PDF here is a working draft; the accepted ICCA 2026 oral and proceedings entry is summarized under <a href="#publication">Publication</a>.</p>
+        <article class="card project-feature detail-feature" id="paper-lecal">
+          <div class="project-copy">
+            <p class="project-kicker">Accepted conference paper</p>
+            <h3>LeCal: Latency-Aware Dataset Curation and Alignment</h3>
+            <p>
+              LeCal is a practical post-hoc calibration workflow for LeRobot teleoperation datasets. It estimates action-to-state delay, surfaces confidence diagnostics, and exports alignment artifacts for downstream model training.
+            </p>
+            <ul class="feature-list">
+              <li>Measures latency between operator action streams and observed robot state transitions.</li>
+              <li>Includes confidence diagnostics and camera offset checks so dataset issues are visible rather than hidden.</li>
+              <li>Produces reusable alignment outputs that can be carried directly into training workflows.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Teleoperation data</span>
+              <span class="tag">Latency calibration</span>
+              <span class="tag">ICCA 2026</span>
+            </div>
+            <ul class="link-list">
+              <li><a href="paper/LeCal_firstDraft.pdf" target="_blank" rel="noopener noreferrer">Download my paper (PDF)</a></li>
+              <li><a href="https://github.com/Toby0614/LeCal" target="_blank" rel="noopener noreferrer">LeCal GitHub</a></li>
+              <li><a href="https://huggingface.co/datasets/Toby0614/lecal_calibration" target="_blank" rel="noopener noreferrer">Calibration dataset</a></li>
+            </ul>
+            <p class="muted-note">The PDF here is a working draft; the accepted ICCA 2026 oral and proceedings entry is summarized under <a href="#publication">Publication</a>.</p>
+          </div>
+          <div class="detail-visual">
+            <div class="detail-panel">
+              <p class="detail-panel-title">Calibration workflow summary</p>
+              <div class="detail-grid">
+                <div class="detail-metric">
+                  <strong>Input</strong>
+                  <span>LeRobot teleoperation demonstrations</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Core task</strong>
+                  <span>Estimate action-to-state delay and misalignment</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Checks</strong>
+                  <span>Confidence scoring and camera offset validation</span>
+                </div>
+                <div class="detail-metric">
+                  <strong>Output</strong>
+                  <span>Reusable artifacts for downstream training</span>
+                </div>
+              </div>
+              <p class="muted-note">The accepted publication entry remains separated above from the working paper draft.</p>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
-          <h3>Reliability-Aware FEM Design of Functionally Graded Plate Metamaterials</h3>
-          <p>
-            Finite-element research on functionally graded perforated plate metamaterials. The study examines how graded perforation layouts redistribute stiffness and stress, then frames the design space in terms of reliability-aware tradeoffs for lightweight but mechanically robust structures.
-          </p>
-          <a class="media-link" href="media/FEM/fem_research_preview.png" target="_blank" rel="noopener noreferrer" aria-label="Open FEM research preview image">
-            <img class="media-image" src="media/FEM/fem_research_preview.png" alt="FEM research screenshot showing graded perforated plate metamaterial results" />
-          </a>
-          <ul class="link-list">
-            <li><a href="media/FEM/fem_reliability_aware_design.pdf" target="_blank" rel="noopener noreferrer">Download FEM paper (PDF)</a></li>
-          </ul>
+        <article class="card project-feature detail-feature">
+          <div class="project-copy">
+            <p class="project-kicker">Finite-element materials study</p>
+            <h3>Reliability-Aware FEM Design of Functionally Graded Plate Metamaterials</h3>
+            <p>
+              Finite-element research on functionally graded perforated plate metamaterials. The study looks at how graded perforation patterns redistribute stress and stiffness, then evaluates that design space through a reliability-aware lens.
+            </p>
+            <ul class="feature-list">
+              <li>Uses FEM to compare mechanically lighter perforated layouts against structural robustness requirements.</li>
+              <li>Focuses on graded metamaterial plates where geometry strongly shapes load paths and stress concentrations.</li>
+              <li>Frames the contribution as a design tradeoff between weight reduction, stiffness distribution, and reliability.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">FEM</span>
+              <span class="tag">Metamaterials</span>
+              <span class="tag">Reliability-aware design</span>
+            </div>
+            <ul class="link-list">
+              <li><a href="media/FEM/fem_reliability_aware_design.pdf" target="_blank" rel="noopener noreferrer">Download FEM paper (PDF)</a></li>
+            </ul>
+          </div>
+          <div class="detail-visual">
+            <a class="media-link" href="media/FEM/fem_research_preview.png" target="_blank" rel="noopener noreferrer" aria-label="Open FEM research preview image">
+              <img class="media-image" src="media/FEM/fem_research_preview.png" alt="FEM research screenshot showing graded perforated plate metamaterial results" />
+            </a>
+            <p class="muted-note">Screenshot preview from the FEM study showing the graded plate metamaterial analysis output.</p>
+          </div>
         </article>
       </div>
     </section>
