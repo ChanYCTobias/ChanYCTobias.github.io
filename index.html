@@ -160,6 +160,31 @@
       gap: 18px;
     }
 
+    .lane-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .lane-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lane-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.85;
+    }
+
+    .lane-card p:last-of-type {
+      margin-bottom: 14px;
+    }
+
     .card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
       border: 1px solid var(--border);
@@ -501,6 +526,37 @@
   </header>
 
   <main class="container">
+    <section aria-label="Portfolio tracks">
+      <div class="lane-grid">
+        <article class="card lane-card">
+          <p class="project-kicker">Research track</p>
+          <h2 class="section-title">Publications, papers, and technical prototypes</h2>
+          <p>
+            This lane groups the peer-reviewed publication, current research papers, simulation work, and hardware research prototypes such as Magnetic Master and the FEM metamaterial study.
+          </p>
+          <ul class="link-list">
+            <li><a href="#publication">Peer-reviewed publication</a></li>
+            <li><a href="#research">Research projects</a></li>
+            <li><a href="#papers">Research papers</a></li>
+            <li><a href="#tooling">Magnetic Master prototype</a></li>
+          </ul>
+        </article>
+
+        <article class="card lane-card">
+          <p class="project-kicker">Commercial / startup track</p>
+          <h2 class="section-title">Productized tools, websites, and deployable demos</h2>
+          <p>
+            This lane covers startup-facing clinical tooling, learning products, mechanical product design, and the macOS utility app work.
+          </p>
+          <ul class="link-list">
+            <li><a href="#websites">Startup and web products</a></li>
+            <li><a href="#product-design">Fusion 360 product renders</a></li>
+            <li><a href="#productivity-app">macOS productivity app</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <section id="publication">
       <h2 class="section-title">Publication</h2>
       <p class="muted-note">
@@ -542,7 +598,7 @@
     </section>
 
     <section id="tooling">
-      <h2 class="section-title">Magnetic Master Device</h2>
+      <h2 class="section-title">Research Prototype: Magnetic Master Device</h2>
       <article class="card">
         <h3>Magnetic Master Prototype and Tracking Workflow</h3>
         <p>
@@ -579,7 +635,7 @@
     </section>
 
     <section id="websites">
-      <h2 class="section-title">Product and Learning Websites</h2>
+      <h2 class="section-title">Commercial and Startup Products</h2>
       <article class="card project-feature">
         <div class="project-copy">
           <p class="project-kicker">Clinical decision-support prototype</p>
@@ -670,7 +726,10 @@
     </section>
 
     <section id="research">
-      <h2 class="section-title">Reinforcement Learning Conference Paper</h2>
+      <h2 class="section-title">Research Projects</h2>
+      <p class="muted-note">
+        Ongoing technical work spanning reinforcement learning, robot perception, embodiment transfer, and hardware-aligned experimentation.
+      </p>
       <div class="cards">
         <article class="card">
           <h3>RL Manipulation Pick-and-Place</h3>
@@ -701,12 +760,23 @@
     </section>
 
     <section id="papers">
-      <h2 class="section-title">Papers</h2>
+      <h2 class="section-title">Research Papers</h2>
       <p class="muted-note">
         Draft manuscripts and technical write-ups shared for reference. For the peer-reviewed accepted conference paper (oral presentation and proceedings), see
         <a href="#publication">Publication</a>.
       </p>
       <div class="cards">
+        <article class="card">
+          <h3>Magnetic Master: Wearable Magnetic Localization Device</h3>
+          <p>
+            Research prototype paper covering the magnetic localization wearable, the tracking workflow, and the hardware design decisions used to turn the sensing concept into a working master device.
+          </p>
+          <ul class="link-list">
+            <li><a href="media/MMD/Msc_Project_Paper_resume.pdf" target="_blank" rel="noopener noreferrer">Download Magnetic Master paper (PDF)</a></li>
+            <li><a href="#tooling">Prototype demos and tracking videos</a></li>
+          </ul>
+        </article>
+
         <article class="card">
           <h3>Modality Dropout in Privileged-Pose Manipulation (RL Paper)</h3>
           <p>
@@ -732,10 +802,23 @@
           </ul>
           <p class="muted-note">The PDF here is a working draft; the accepted ICCA 2026 oral and proceedings entry is summarized under <a href="#publication">Publication</a>.</p>
         </article>
+
+        <article class="card">
+          <h3>Reliability-Aware FEM Design of Functionally Graded Plate Metamaterials</h3>
+          <p>
+            Finite-element research on functionally graded perforated plate metamaterials. The study examines how graded perforation layouts redistribute stiffness and stress, then frames the design space in terms of reliability-aware tradeoffs for lightweight but mechanically robust structures.
+          </p>
+          <a class="media-link" href="media/FEM/fem_research_preview.png" target="_blank" rel="noopener noreferrer" aria-label="Open FEM research preview image">
+            <img class="media-image" src="media/FEM/fem_research_preview.png" alt="FEM research screenshot showing graded perforated plate metamaterial results" />
+          </a>
+          <ul class="link-list">
+            <li><a href="media/FEM/fem_reliability_aware_design.pdf" target="_blank" rel="noopener noreferrer">Download FEM paper (PDF)</a></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section>
+    <section id="product-design">
       <h2 class="section-title">Fusion 360 Products</h2>
       <article class="card wide-gallery">
         <h3>Mechanical Product Renders</h3>
@@ -760,7 +843,7 @@
       </article>
     </section>
 
-    <section>
+    <section id="groot">
       <h2 class="section-title">Fine-Tuning GR00T N1.6 for Cross-Embodiment Adaptation</h2>
       <div class="cards">
         <article class="card">
@@ -780,7 +863,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="productivity-app">
       <h2 class="section-title">macOS Productivity App</h2>
       <div class="cards">
         <article class="card">
