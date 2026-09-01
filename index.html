@@ -765,41 +765,21 @@
         </div>
       </article>
 
-      <div class="compact-grid">
-        <article class="card">
-          <p class="project-kicker">Systems</p>
-          <h3>ROS2 Perception Pipeline</h3>
-          <p>
-            Reusable ROS2 perception and integration framework for simulation-first robotics. Connects Isaac Sim and ROS2 so sensing, message transport, and downstream task logic sit in one research-ready stack.
-          </p>
-          <div class="tag-row">
-            <span class="tag">ROS2</span>
-            <span class="tag">Perception</span>
-            <span class="tag">Isaac Sim</span>
-          </div>
-          <ul class="link-list">
-            <li><a href="https://github.com/Toby0614/isaacsim_ros2_framework" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <p class="project-kicker">Embodiment transfer</p>
-          <h3>Fine-tuning GR00T N1.6</h3>
-          <p>
-            Dataset collection and teleoperation with Hugging Face SO-101. Ongoing work with a proposal, collection demo, and periodically updated fine-tuned models.
-          </p>
-          <div class="tag-row">
-            <span class="tag">GR00T N1.6</span>
-            <span class="tag">Teleoperation</span>
-            <span class="tag">Cross-embodiment</span>
-          </div>
-          <ul class="link-list">
-            <li><a href="https://youtu.be/FH0osPKTs0I" target="_blank" rel="noopener noreferrer">Dataset collection demo</a></li>
-            <li><a href="https://drive.google.com/file/d/1REL5Oa7Jwu2b0YEfhmvwxx0l59yqWt-v/view?usp=sharing" target="_blank" rel="noopener noreferrer">Proposal</a></li>
-            <li><a href="https://huggingface.co/Toby0614/GR00T_fine-tune_LLMVision_frozen/tree/main" target="_blank" rel="noopener noreferrer">Fine-tuned models</a></li>
-          </ul>
-        </article>
-      </div>
+      <article class="card">
+        <p class="project-kicker">Systems</p>
+        <h3>ROS2 Perception Pipeline</h3>
+        <p>
+          Reusable ROS2 perception and integration framework for simulation-first robotics. Connects Isaac Sim and ROS2 so sensing, message transport, and downstream task logic sit in one research-ready stack.
+        </p>
+        <div class="tag-row">
+          <span class="tag">ROS2</span>
+          <span class="tag">Perception</span>
+          <span class="tag">Isaac Sim</span>
+        </div>
+        <ul class="link-list">
+          <li><a href="https://github.com/Toby0614/isaacsim_ros2_framework" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
+        </ul>
+      </article>
 
       <article class="card" id="product-design">
         <p class="project-kicker">Mechanical design</p>
@@ -830,7 +810,7 @@
         <span class="section-index">03</span>
         <h2 class="section-title">Papers</h2>
         <p class="section-note">
-          Manuscripts and technical write-ups. Crosswind is a working draft, not a finished paper. For the peer-reviewed LeCal acceptance, see <a href="#publication">Publication</a>.
+          Manuscripts and technical write-ups. Crosswind and the GR00T N1.6 study are working drafts, not finished papers. For the peer-reviewed LeCal acceptance, see <a href="#publication">Publication</a>.
         </p>
       </div>
 
@@ -852,6 +832,30 @@
         </p>
         <ul class="link-list">
           <li><a href="crosswind/Crosswind.pdf" target="_blank" rel="noopener noreferrer">Download draft (PDF)</a></li>
+        </ul>
+      </article>
+
+      <article class="card paper-entry featured" id="paper-groot">
+        <p class="project-kicker">Working draft</p>
+        <h3>Fine-Tuning GR00T N1.6 for Cross-Embodiment Adaptation: Ablating Backbone Importance in Low-Data Regimes for Small-Arm Manipulation</h3>
+        <p class="paper-meta">Tobias Chan · working draft</p>
+        <div class="tag-row">
+          <span class="tag draft">Draft</span>
+          <span class="tag">GR00T N1.6</span>
+          <span class="tag">Cross-embodiment</span>
+          <span class="tag">VLA</span>
+          <span class="tag">SO-ARM101</span>
+        </div>
+        <p>
+          How a humanoid-scale vision-language-action model adapts to a low-cost 6-DoF arm with dual cameras when data and compute are limited. The study fine-tunes NVIDIA GR00T N1.6 on SO-ARM101 as a new embodiment, using a simulation-first pipeline: human teleoperation of a long-horizon “pick 3 oranges” task, Isaac Lab Mimic augmentation, then LeRobot-format training on a single 24GB GPU.
+        </p>
+        <p>
+          A minimal ablation set isolates which backbone actually matters in that regime: DiT action head only, N1.6-style partial VLM unfreeze, LoRA on the top VLM layers, camera-view ablations (dual / front / wrist), and a cross-embodiment initializer comparison against a single-arm finetuned checkpoint. Evaluations track long-horizon completion, perturbation robustness, and VRAM feasibility. Scoped as a working draft, not a finished paper.
+        </p>
+        <ul class="link-list">
+          <li><a href="paper/GR00T_fine-tune_proposal.pdf" target="_blank" rel="noopener noreferrer">Download draft (PDF)</a></li>
+          <li><a href="https://youtu.be/FH0osPKTs0I" target="_blank" rel="noopener noreferrer">Dataset collection demo</a></li>
+          <li><a href="https://huggingface.co/Toby0614/GR00T_fine-tune_LLMVision_frozen/tree/main" target="_blank" rel="noopener noreferrer">Fine-tuned models</a></li>
         </ul>
       </article>
 
