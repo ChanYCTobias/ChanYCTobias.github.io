@@ -312,6 +312,12 @@
       color: var(--accepted);
     }
 
+    .tag.ongoing {
+      background: #e8eef6;
+      border-color: #c5d2e4;
+      color: #1f4a73;
+    }
+
     .link-list {
       list-style: none;
       margin: 0;
@@ -363,6 +369,15 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       margin: 14px 0 12px;
+    }
+
+    .video-feature {
+      margin: 14px 0 8px;
+    }
+
+    .video-feature .video-frame {
+      width: 100%;
+      max-height: 520px;
     }
 
     .video-panel {
@@ -604,6 +619,7 @@
       <a class="brand" href="#top">Tobias Chan</a>
       <div class="nav-links">
         <a href="#publication">Publication</a>
+        <a href="#colonnavi">ColonNavi</a>
         <a href="#projects">Projects</a>
         <a href="#papers">Papers</a>
         <a href="#contact">Contact</a>
@@ -651,9 +667,44 @@
       </article>
     </section>
 
-    <section id="projects">
+    <section id="colonnavi">
       <div class="section-head">
         <span class="section-index">02</span>
+        <h2 class="section-title">ColonNavi</h2>
+        <p class="section-note">Ongoing research collaboration with CUHK PhD researchers on autonomous magnetic capsule endoscopy.</p>
+      </div>
+      <article class="card featured">
+        <p class="project-kicker">Ongoing collaboration · CUHK</p>
+        <h3>Lumen-bearing navigation for magnetic capsule endoscopes</h3>
+        <p>
+          ColonNavi is software for navigating a magnetic capsule endoscope through a colon phantom without a human telling it where to look or when to push. From camera frames and magnetic action data, the stack decides which way the forward lumen is, what to do when that lumen leaves the camera frame, and whether the capsule is actually moving or stalled against the wall.
+        </p>
+        <p>
+          The work is not global localization. It is camera-frame “where next,” plus safe recovery when vision or traction fails. The intended contributions are geometry-supervised lumen bearings (a centerline lookahead point, not a click on the darkest hole), belief-style out-of-frame search that refuses a rear opening as “forward,” and traction estimates from visual motion versus commanded magnet action so stall recovery never raises force.
+        </p>
+        <div class="tag-row">
+          <span class="tag ongoing">Ongoing</span>
+          <span class="tag">CUHK collaboration</span>
+          <span class="tag">Capsule endoscopy</span>
+          <span class="tag">Lumen navigation</span>
+          <span class="tag">Magnetic actuation</span>
+        </div>
+        <figure class="video-panel video-feature">
+          <video class="video-frame" controls preload="metadata" playsinline>
+            <source src="media/colon/lumen_follow_demo.mp4" type="video/mp4" />
+            <a href="media/colon/lumen_follow_demo.mp4">Open lumen-follow demo video</a>
+          </video>
+          <figcaption>Lumen-follow overlay on collected colon-phantom video. Training-free darkest-region tracker used for demonstration; closed-loop magnetic navigation on the physical phantom is still ahead.</figcaption>
+        </figure>
+        <p class="muted-note">
+          Current status: working perception / traction / policy stack, synthetic validation, and this real-video demo. Physical closed-loop phantom trials have not been run yet.
+        </p>
+      </article>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <span class="section-index">03</span>
         <h2 class="section-title">Projects</h2>
         <p class="section-note">Hardware, simulation, and a hosted clinical demo.</p>
       </div>
@@ -807,7 +858,7 @@
 
     <section id="papers">
       <div class="section-head">
-        <span class="section-index">03</span>
+        <span class="section-index">04</span>
         <h2 class="section-title">Papers</h2>
         <p class="section-note">
           Manuscripts and technical write-ups. Crosswind and the GR00T N1.6 study are working drafts, not finished papers. For the peer-reviewed LeCal acceptance, see <a href="#publication">Publication</a>.
